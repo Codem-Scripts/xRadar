@@ -1,0 +1,150 @@
+<div class="tablet-frame">
+
+    <radardata :setActivePage="setActivePage"  v-if="activePage == 'radardata'"></radardata>
+    <settings :setActivePage="setActivePage"  v-if="activePage == 'settings'"></settings>
+
+    <div class="tablet-wrapper">
+        <div class="tablet-header">
+            <img class="tablet-logo" :src="logo" />
+            <p class="tablet-header-text">{{ Locales["HEADER_TITLE"]}}</p>
+            <img src="./assets/icons.png" />
+        </div>
+        <div class="tablet-main" @click.self="setShowSelect(false);PlaySound()" :style="{opacity : !activePage ? '1' : '0.55' }">
+            <div class="tablet-section">
+                <div class="radar-settings">
+                    <div class="radar-settings-header-wrapper">
+                        <div class="radar-settings-header">
+                            <img src="./assets/settings-logo.png" />
+                            <div>
+                                <h1>{{ Locales["RADAR_SETTINGS_TITLE"]}}</h1>
+                                <p>{{ Locales["CONFIG_TITLE"] }}</p>
+                            </div>
+                        </div>
+                        <div class="tablet-line"></div>
+                    </div>
+
+                    <div class="tablet-button" @click="setActivePage('settings');PlaySound()">
+                        <inlinesvg src="./assets/settings-icon.svg" />
+                        <p>{{ Locales["SETTINGS_TITLE"] }}</p>
+                    </div>
+                </div>
+                <div class="scanned-vehicles">
+                    <div class="radar-settings-header">
+                        <img src="./assets/scanned-vehicles-logo.png" />
+                        <div>
+                            <h1>{{ Locales["RADAR_SCANNED"]}}</h1> 
+                            <p>{{ Locales["NUMBER_SCANNED"]}}</p>
+                        </div>
+                    </div>
+                    <div class="scanned-vehicles-container">
+                        <div class="scanned-vehicles-amount">
+                            <h1>{{ Locales["VEHICLES_SCANNED"]}}</h1>
+                            <p v-html="FormatNum(frontScannedVehicles)">
+
+                            </p>
+                        </div>
+                        <div class="scanned-vehicles-amount red">
+                            <h1>{{ Locales["VEHICLES_SCANNED"]}}</h1>
+                            <p  v-html="FormatNum(rearScannedVehicles)">
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tablet-section">
+                <div class="radar-data">
+                    <div class="radar-settings-header">
+                        <img src="./assets/radar-data-icon.png" />
+                        <div>
+                            <h1>{{Locales["RADAR_DATA"] }}</h1>
+                            <p>{{Locales["DATA_ANALSYS"] }}</p>
+                        </div>
+                    </div>
+                    <!-- <div class="radar-data-info">
+                        <inlinesvg src="./assets/info-icon.svg" />
+                        <p>only authorized persons can see</p>
+                    </div> -->
+                    <div class="tablet-button" @click="setActivePage('radardata');PlaySound()">
+                        <inlinesvg src="./assets/data-icon.svg" />
+                        <p>{{Locales["OPEN_DATA"] }}</p>
+                    </div>
+                </div>
+                <div class="priority-calls">
+                    <div class="radar-settings-header-wrapper">
+                        <div class="radar-settings-header">
+                            <img src="./assets/priority-call-icon.png" />
+                            <div>
+                                <h1>{{Locales["BOLO"] }}</h1>
+                                <p>{{Locales["SET_BOLO"] }}</p>
+                            </div>
+                        </div>
+                        <div class="tablet-line"></div>
+                    </div>
+
+                    <input v-model="boloPlate" class="plate-number-input" type="text" placeholder="123ABC456" />
+                    <div @click="addBoloPlate();PlaySound()" class="search-button">
+                        <p>{{Locales["ADD_BOLO_PLATE"]}}</p>
+                    </div>
+                    <div @click="clearBoloPlate();PlaySound()" class="search-button">
+                        <p>{{Locales["CLEAR_BOLO_PLATE"]}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tablet-section">
+                <div v-if="getProfile" class="pp-container">
+                    <div class="name-container">
+                        <h1>
+                            {{Locales["HELLO"]}},
+                            <span>{{getProfile.name}}</span>
+                        </h1>
+                    </div>
+                    <div class="pp-border">
+                        <img :src="getProfile.avatar" />
+                    </div>
+                </div>
+                <div class="radar-time-container">
+                    <div class="radar-settings-header-wrapper">
+                        <div class="radar-settings-header">
+                            <img src="./assets/radar-time-icon.png" />
+                            <div>
+                                <h1>{{Locales["RADAR_TIME"]}}</h1>
+                                <p>{{toHHMMSS}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-language-container">
+                    <div class="radar-settings-header-wrapper">
+                        <div class="radar-settings-header">
+                            <img src="./assets/ui-language-icon.png" />
+                            <div>
+                                <h1>{{Locales["UI_LANGUAGE"]}}</h1>
+                                <p>{{Locales["RADAR_LANGUAGE"]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <select class="tablet-select" :value="selectedLanguage" @change="setSelectedLanguage($event.target.value)">
+                        <option value="default">Default</option>
+                        <option value="en">English</option>
+                        <option value="tr">Turkish</option>
+                        <option value="de">Deutsch</option>
+                        <option value="es">Spanisch</option>
+                        <option value="pr">Portugiesisch</option>
+                        <option value="in">Hindi</option>
+                    </select>
+                    <!-- <div class="tablet-select" @click="setShowSelect(!showSelect);PlaySound()">
+                        <p>English</p>
+                        <inlinesvg src="./assets/select-icon.svg" />
+                        <div class="tablet-select-options" v-if="showSelect">
+                            <p>English</p>
+                            <p>Turkish</p>
+                            <p>Kurdish</p>
+                        </div>
+                    </div> -->
+                </div>
+       
+            </div>
+        </div>
+    </div>
+</div>

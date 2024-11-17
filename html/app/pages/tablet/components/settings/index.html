@@ -1,0 +1,79 @@
+<div class="tablet-settings">
+    <div class="settings-wrapper">
+        <div class="radar-settings-header">
+            <img src="./assets/settings-logo.png">
+            <div>
+                <h1>{{Locales["RADAR_SETTINGS_TITLE"]}}</h1>
+                <p>{{Locales["CONFIG_TITLE"]}}</p>
+            </div>
+        </div>
+        <div class="settings-close-container">
+            <p class="settings-close-text">{{Locales["EXIT"]}}</p>
+            <div class="settings-close-button" @click="setActivePage(false);PlaySound()">
+                <inlinesvg src="./assets/close-icon.svg"></inlinesvg>
+            </div>
+        </div>
+        <div class="antenna-settings-container">
+            <div class="antenna-header">
+                <div class="antenna-header-left">
+                    <inlinesvg src="./assets/mdi_antenna.svg"></inlinesvg>
+                    <p>{{Locales["ANTENNA_SETTINGS"]}}</p>
+                </div>
+                <inlinesvg src="./assets/info.svg"></inlinesvg>
+            </div>
+            <div class="front-antenna">
+                <p class="antenna-header-text">{{Locales["FRONT_ANTENNA"]}}</p>
+                <div class="antenna-options">
+                    <div @click="setFWDMode('opp');PlaySound()" class="front-left-antenna-option" :class="{active:fwdMode == 'opp' && frontXMIT}">
+                        <h1>OPP</h1>
+                        <p>LK/REL</p>
+                    </div>
+                    <div @click="setFrontXMIT();PlaySound()" class="front-center-antenna-option" :class="{active:frontXMIT}">
+                        <inlinesvg src="./assets/arrow-up.svg"></inlinesvg>
+
+                        <div>
+                            <h1>XMIT</h1>
+                            <p>HOLD</p>
+                        </div>
+                        <inlinesvg src="./assets/arrow-up.svg"></inlinesvg>
+
+                    </div>
+                    <div @click="setFWDMode('same');PlaySound()" class="front-right-antenna-option" :class="{active:fwdMode == 'same' && frontXMIT}">
+                        <h1>SAME</h1>
+                        <p>LK/REL</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tablet-line" style="margin: .2rem auto;"></div>
+            <div class="rear-antenna">
+                <div class="antenna-options antenna-options-rear">
+                    <div @click="setBWDMode('opp');PlaySound()"  class="front-left-antenna-option rear-left-antenna" :class="{active:bwdMode == 'opp' && rearXMIT}">
+                        <h1>OPP</h1>
+                        <p>LK/REL</p>
+                    </div>
+                    <div @click="setRearXMIT();PlaySound()" class="front-center-antenna-option rear-center-antenna" :class="{active:rearXMIT}">
+                        <inlinesvg style="transform: rotate(180deg);" src="./assets/arrow-up.svg"></inlinesvg>
+
+                        <div>
+                            <h1>XMIT</h1>
+                            <p>HOLD</p>
+                        </div>
+                        <inlinesvg style="transform: rotate(180deg);" src="./assets/arrow-up.svg"></inlinesvg>
+
+                    </div>
+                    <div @click="setBWDMode('same');PlaySound()" class="front-right-antenna-option rear-right-antenna" :class="{active:bwdMode == 'same' && rearXMIT}">
+                        <h1>SAME</h1>
+                        <p>LK/REL</p>
+                    </div>
+
+                </div>
+                <p class="antenna-header-text">{{Locales["REAR_ANTENNA"]}}</p>
+
+            </div>
+
+        </div>
+  
+
+    </div>
+</div>

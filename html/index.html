@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vuex@4.0.0/dist/vuex.global.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./app/pages/radar/index.css">
+    <link rel="stylesheet" href="./app/pages/tablet/index.css">
+    <link rel="stylesheet" href="./app/pages/tablet/components/settings/index.css">
+    <link rel="stylesheet" href="./app/pages/tablet/components/radardata/index.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+
+
+</head>
+<body>
+    <div id="app">
+        <radar v-if="isRadarActive"></radar>
+        <tablet v-if="isTabletActive"></tablet>
+    </div>
+</body>
+<script src="./app/index.js" type="module"></script>
+</html>

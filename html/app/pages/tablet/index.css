@@ -1,0 +1,564 @@
+.tablet-frame {
+    width: 68.375rem;
+    height: 41.625rem;
+    background-image: url(../../../assets/tablet-frame.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.55rem 1.9rem;
+}
+
+.tablet-header {
+    width: 100%;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    height: 2.75rem;
+    background: radial-gradient(123.86% 123.86% at 50.00% 50.00%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.00) 100%);
+
+}
+
+.tablet-main {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding: 0 2rem;
+}
+
+.tablet-section {
+    width: 31%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    row-gap: 1.2rem;
+    flex-direction: column;
+}
+
+
+.radar-settings-header {
+    display: flex;
+    align-items: center;
+    column-gap: .45rem;
+}
+
+.radar-settings-header h1 {
+    font-family: Gilroy;
+    font-size: 1.5796rem;
+    font-style: normal;
+    font-weight: 700;
+    word-break: break-word;
+    line-height: normal;
+    background: radial-gradient(106.45% 106.45% at 50.00% 50.00%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.radar-settings-header p {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Gilroy;
+    font-size: 1.0936rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.search-level-container {
+    display: flex;
+    align-items: center;
+    column-gap: .4rem;
+}
+
+
+.search-level-container div {
+    width: 1.75rem;
+    height: auto;
+}
+
+
+.search-level-text {
+    color: rgba(255, 255, 255, 0.77);
+    font-family: Gilroy;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.priority-calls .radar-settings-header h1 {
+    background: radial-gradient(106.45% 106.45% at 50.00% 50.00%, #FF5A5A 0%, rgba(255, 90, 90, 0.00) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.priority-calls .radar-settings-header p {
+    color: rgba(255, 90, 90, 0.44);
+
+}
+
+.radar-data-container .radar-settings-header h1 {
+    background: radial-gradient(106.45% 106.45% at 50.00% 50.00%, #57FF7C 0%, rgba(87, 255, 124, 0.00) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.radar-data-container .radar-settings-header p {
+    color: rgba(87, 255, 124, 0.55);
+}
+
+.tablet-select {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 .7rem;
+    width: 15.5rem;
+    height: 2.75rem;
+    transition: all .2s ease;
+    position: relative;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.06);
+    background: radial-gradient(101.00% 101.00% at 50.00% 50.00%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.00) 100%);
+    color: rgba(255, 255, 255, 0.40);
+    font-family: Gilroy;
+    font-size: 1.0829rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: .5rem;
+    transition: all .2s ease;
+    outline: none;
+}
+
+
+.tablet-select-options{
+    cursor: pointer;
+    position: absolute;
+    padding: .7rem;
+    width: 15.5rem;
+    height: auto;
+    transition: all .2s ease;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.06);
+    background: radial-gradient(123.86% 123.86% at 50.00% 50.00%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.00) 100%);
+    top: 3rem;
+    left: 0;
+    z-index: 2;
+    backdrop-filter: blur(6px);
+}
+
+ option {
+    background-color: #0B0B0B;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.40);
+    font-family: Gilroy;
+    font-size: 1.0829rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: .5rem;
+    transition: all .2s ease;
+ }
+
+.tablet-select-options p{
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.40);
+    font-family: Gilroy;
+    font-size: 1.0829rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: .5rem;
+    transition: all .2s ease;
+}
+
+.tablet-select-options p:hover{
+    opacity: 0.8;
+}
+
+.tablet-select p{
+    color: rgba(255, 255, 255, 0.40);
+    font-family: Gilroy;
+    font-size: 1.0829rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+
+.radar-data {
+    padding: 1rem;
+
+    width: 100%;
+    height: 11.75rem;
+    background-image: url(../../../assets/scanned-vehicles.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+    justify-content: space-between;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.scanned-vehicles {
+    padding: 1rem;
+
+    width: 100%;
+    height: 11.75rem;
+    background-image: url(../../../assets/scanned-vehicles.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+    justify-content: space-between;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.scanned-vehicles-amount {
+    width: 8.1875rem;
+    height: 4.6875rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.05);
+    background: radial-gradient(126.00% 126.00% at 50.00% 50.00%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.scanned-vehicles-container {
+    display: flex;
+    align-items: center;
+    column-gap: .75rem;
+}
+
+.scanned-vehicles-amount h1 {
+    color: rgba(255, 255, 255, 0.52);
+    font-family: Gilroy;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.scanned-vehicles-amount.red h1 {
+    color: rgba(255, 101, 101, 0.52);
+
+}
+
+
+
+
+.scanned-vehicles-amount p {
+    font-family: DS-Digital;
+    font-size: 2.7477rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.4534rem;
+    color: rgba(48, 207, 112, 0.3);
+
+}
+
+.scanned-vehicles-amount p span {
+    color: #30CF70;
+
+}
+
+.scanned-vehicles-amount.red p {
+
+    color: rgba(255, 101, 101, 0.32);
+}
+
+.scanned-vehicles-amount.red p span {
+
+    color: #FF6565;
+}
+
+
+.tablet-line {
+    background: rgba(255, 255, 255, 0.08);
+    width: 14.125rem;
+    height: 0.125rem;
+}
+
+.priority-calls {
+    padding: 1rem;
+    width: 100%;
+    height: 18.6875rem;
+    background-image: url(../../../assets/priority-calls.png);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.plate-number-input {
+    appearance: none;
+    width: 16.9375rem;
+    text-align: center;
+    height: 2.75rem;
+    border-radius: 0.3125rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.06);
+    background: radial-gradient(101.00% 101.00% at 50.00% 50.00%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.00) 100%);
+    outline: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: Gilroy;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0 .7rem;
+}
+
+.plate-number-input::placeholder {
+    color: rgba(255, 255, 255, 0.26);
+    font-family: Gilroy;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+.radar-data-info {
+    display: flex;
+    align-items: center;
+
+    column-gap: .25rem;
+}
+
+.radar-data-info p {
+    color: rgba(104, 201, 255, 0.37);
+    font-family: Gilroy;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.radar-settings {
+    padding: 1rem;
+    width: 100%;
+    height: 18.6875rem;
+    background-image: url(../../../assets/radar-settings-container.png);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+    justify-content: space-between;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.radar-time-container {
+    padding: 1rem;
+    width: 100%;
+    height: 6.625rem;
+    background-image: url(../../../assets/radar-time-container.png);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+
+.radar-data-container {
+    padding: 1rem;
+    width: 100%;
+    height: 7.4rem;
+    background-image: url(../../../assets/radar-data-container.png);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.ui-language-container {
+    padding: 1rem;
+    width: 100%;
+    height: 10.5rem;
+    background-image: url(../../../assets/ui-language-container.png);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+    justify-content: space-between;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+
+
+.tablet-button {
+    width: 16.9375rem;
+    height: 2.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .5rem;
+    cursor: pointer;
+    border-radius: 0.3125rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.04);
+    background: radial-gradient(39.44% 89.29% at 50.18% -0.00%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 100%), radial-gradient(125.00% 125.00% at 50.00% 50.00%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.00) 100%);
+    transition: all .2s ease;
+}
+
+.tablet-button:hover {
+    opacity: 0.7;
+}
+
+
+.tablet-button p {
+    color: rgba(255, 255, 255, 0.30);
+    font-family: Gilroy;
+    font-size: 1.0272rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.pp-container {
+    display: flex;
+    align-items: center;
+    column-gap: .4rem;
+    justify-content: flex-end;
+}
+
+.pp-border {
+    padding: .18rem;
+    width: 3.5625rem;
+    height: 3.5625rem;
+    border-radius: 50%;
+    border: 0.125rem solid #00C5CE;
+}
+
+.pp-border img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.name-container {
+    text-align: right;
+}
+
+.name-container h1 {
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: radial-gradient(27.38% 202.27% at 10.77% 50.00%, #00FBFE 0%, rgba(0, 251, 254, 0.00) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.name-container h1 span {
+    background: radial-gradient(109.09% 109.09% at 50.00% 50.00%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.name-container p {
+    color: rgba(255, 255, 255, 0.60);
+    font-family: Inter;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.search-button {
+    width: 16.9375rem;
+    height: 2.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .5rem;
+    cursor: pointer;
+    border-radius: 0.3125rem;
+    border: 0.0625rem solid rgba(255, 81, 81, 0.17);
+    background: radial-gradient(39.44% 89.29% at 50.18% -0.00%, rgba(255, 81, 81, 0.03) 0%, rgba(255, 81, 81, 0.00) 100%), radial-gradient(125.00% 125.00% at 50.00% 50.00%, rgba(255, 81, 81, 0.06) 0%, rgba(255, 81, 81, 0.00) 100%);
+    transition: all .2s ease;
+}
+
+.search-button:hover {
+    opacity: 0.7;
+}
+
+
+.search-button p {
+    color: rgba(255, 96, 96, 0.59);
+
+    font-family: Gilroy;
+    font-size: 1.0272rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+.tablet-header-text {
+    color: rgba(255, 255, 255, 0.29);
+    font-family: Gilroy;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.0112rem;
+}
+
+.tablet-logo {
+    width: 4.875rem;
+    height: 1.5rem;
+    object-fit: cover;
+}
+
+.radar-settings-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.tablet-wrapper {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(50% 43.92% at 50% 43.92%, rgba(27, 28, 32, 0.95) 0%, rgba(15, 15, 17, 0.98) 100%);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,258 @@
+<div class="radar-fast-actions" v-if="showFastActions">
+    <div class="radar-fast-actions-wrapper">
+        <div class="radar-fast-actions-header">
+            <div class="radar-settings-header">
+                <img src="./assets/shortcut-settings-logo.png" />
+                <div>
+                    <h1>{{ Locales["SHORTCUT_TITLE"] }}</h1>
+                </div>
+            </div>
+            <div class="radar-fast-actions-exit">
+                <img v-if="radarPower" @click="radarAction('radarPower');PlaySound()"
+                    style="cursor: pointer; width:2.3125rem; height:2.3125rem; object-fit: cover;"
+                    src="./assets/on-button.png" />
+                <img v-else @click="radarAction('radarPower');PlaySound()"
+                    style="cursor: pointer; width:2.3125rem; height:2.3125rem; object-fit: cover;"
+                    src="./assets/off-button.png" />
+
+            </div>
+        </div>
+        <div class="radar-fast-actions-container">
+            <div class="radar-fast-actions-left">
+                <div class="radar-fast-actions-front-antenna">
+                    <h1>{{ Locales["FRONT_ANTENNA"] }}</h1>
+                    <div class="radar-fast-actions-antenna-buttons">
+                        <div class="radar-fast-actions-antenna-button" :class="{active:frontXMIT}"
+                            @click="radarAction('setFrontXMIT');PlaySound()">XMIT ({{frontXMIT ? 'ON' : 'OFF'}})</div>
+                        <div class="radar-fast-actions-antenna-button" :class="{active:fwdMode == 'same' && frontXMIT}"
+                            @click="radarAction('setFWDMode', 'same');PlaySound()">SAME ({{fwdMode == 'same' && frontXMIT ? 'ON' : 'OFF'}})</div>
+                        <div class="radar-fast-actions-antenna-button" :class="{active:fwdMode == 'opp' && frontXMIT}"
+                            @click="radarAction('setFWDMode', 'opp');PlaySound()">OPP ({{fwdMode == 'opp' && frontXMIT ? 'ON' : 'OFF'}})</div>
+                    </div>
+                    <div class="radar-fast-actions-antenna-buttons">
+                        <div class="radar-fast-actions-antenna-button" :class="{active : lockedFrontVehicle}"
+                            @click="radarAction('lockFrontVehicle');PlaySound()">{{ Locales["PLATE_LOCK"] }}</div>
+                        <div class="radar-fast-actions-antenna-button"
+                            :class="{active :  parseInt(frontLockedSpeed) >= 0 ? true : false}"
+                            @click="radarAction('lockFrontSpeed');PlaySound()">{{ Locales["SPEED_LOCK"] }}</div>
+                    </div>
+                </div>
+                <div class="radar-fast-actions-rear-antenna">
+                    <h1>{{ Locales["REAR_ANTENNA"] }}</h1>
+                    <div class="radar-fast-actions-antenna-buttons">
+                        <div class="radar-fast-actions-antenna-button " :class="{active:rearXMIT}"
+                            @click="radarAction('setRearXMIT');PlaySound()">XMIT ({{rearXMIT ? 'ON' : 'OFF'}})</div>
+                        <div class="radar-fast-actions-antenna-button" :class="{active:bwdMode == 'same' && rearXMIT}"
+                            @click="radarAction('setBWDMode', 'same');PlaySound()">SAME ({{bwdMode == 'same' && rearXMIT ? 'ON' : 'OFF'}})</div>
+                        <div class="radar-fast-actions-antenna-button" :class="{active:bwdMode == 'opp' && rearXMIT}"
+                            @click="radarAction('setBWDMode', 'opp');PlaySound()">OPP ({{bwdMode == 'opp' && rearXMIT ? 'ON' : 'OFF'}})</div>
+                    </div>
+                    <div class="radar-fast-actions-antenna-buttons">
+                        <div class="radar-fast-actions-antenna-button" :class="{active : lockedRearVehicle}"
+                            @click="radarAction('lockRearVehicle');PlaySound()">{{ Locales["PLATE_LOCK"] }}</div>
+                        <div class="radar-fast-actions-antenna-button "
+                            :class="{active : parseInt(rearLockedSpeed) >= 0 ? true : false}"
+                            @click="radarAction('lockRearSpeed');PlaySound()">{{ Locales["SPEED_LOCK"] }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="radar-fast-actions-right">
+                <div class="speed-warning-antenna">
+                    <h1>{{ Locales["SPEED"] }}</h1>
+                    <div @click="radarAction('increaseFrontWarningSpeed');PlaySound()" class="increase-speed-button"></div>
+                    <input v-if="frontSpeedWarning" v-model="frontSpeedWarning"
+                        @change="radarAction('setFrontWarningSpeed', $event.target.value)" type="number" min="0"
+                        max="300" placeholder="80">
+                    <input v-else @change="radarAction('setFrontWarningSpeed', $event.target.value)" type="number"
+                        min="0" max="300" placeholder="80">
+
+                    <div @click="radarAction('decreaseFrontWarningSpeed');PlaySound()" class="decrease-speed-button"></div>
+
+                </div>
+                <div class="speed-warning-antenna">
+                    <h1>{{ Locales["SPEED"] }}</h1>
+                    <div @click="radarAction('increaseRearWarningSpeed');PlaySound()" class="increase-speed-button"></div>
+                    <input v-if="rearSpeedWarning" v-model="rearSpeedWarning"
+                        @change="radarAction('setRearWarningSpeed', $event.target.value)" type="number" min="0"
+                        max="300" placeholder="80">
+                    <input v-else @change="radarAction('setRearWarningSpeed', $event.target.value)" type="number"
+                        min="0" max="300" placeholder="80">
+
+                    <div @click="radarAction('decreaseRearWarningSpeed');PlaySound()" class="decrease-speed-button"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="radar" :class="{'radar-off': !radarPower}">
+
+    <div class="radar-wrapper" >
+
+
+        <img class="radar-mark" src="./assets/1.png" />
+        <div class="radar-open-status active">
+            <inlinesvg fill="#707070" src="./assets/on.svg" />
+            <p >{{ Locales["OPEN"] }}</p>
+        
+        </div>
+        <div class="radar-top">
+            <div class="front-sensor">
+                <div class="sensor-wrapper">
+                    <div class="plate">
+                        <p>{{frontRadarPlate}}</p>
+                    </div>
+                    <div class="sensor-status">
+                        <p class="active">{{ Locales["FRONT"] }}</p>
+                        <p :class="{'active-orange':lockedFrontVehicle}">{{Locales["LOCKED"]}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="keys">
+                <div class="key-container" v-for="key in keys">
+                    <div class="key">{{key.primaryLabel}}</div>
+                    <img src="./assets/+.png" />
+                    <div class="key">{{key.secondaryLabel}}</div>
+                    <div class="shortcut">
+                        <h1>{{ Locales["SHORTCUT"] }}</h1>
+                        <p>{{key.title}}</p>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="rear-sensor">
+                <div class="sensor-wrapper">
+                    <div class="plate">
+                        <p>{{rearRadarPlate}}</p>
+                    </div>
+                    <div class="sensor-status">
+                        <p class="active">{{ Locales["REAR"] }}</p>
+                        <p :class="{'active-orange':lockedRearVehicle}">{{ Locales["LOCKED"] }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="radar-frame">
+            <div class="radar-frame-top">
+                <div class="radar-frame-front">
+                    <div class="radar-frame-wrapper">
+                        <div class="radar-frame-front-left">
+                            <div class="radar-frame-front-status">
+                                <p :class="{active:fwdMode == 'same' && frontXMIT}">SAME</p>
+                                <p :class="{active:fwdMode == 'opp' && frontXMIT}">OPP</p>
+                                <p :class="{active:frontXMIT}">XMIT</p>
+                            </div>
+                            <div class="radar-frame-front-speed">
+                                <p v-html="FormatSpeed(frontRadarSpeed)"></p>
+                            </div>
+                        </div>
+                        <div class="radar-frame-front-right">
+                            <div class="radar-frame-front-status">
+                                <p :class="{'active-red':parseInt(frontLockedSpeed) >= 0 ? true : false}">{{ Locales["LOCK"] }}</p>
+                                <p :class="{'active-red':frontSpeedWarning}">{{ Locales["FAST"] }}</p>
+                            </div>
+                            <div class="radar-frame-front-speed radar-frame-front-speed-red">
+                                <!-- <input
+                                    type="number"
+                                    min="1"
+                                    max="300"
+                                    v-model="frontAllowRadarSpeed"
+                                    placeholder="000"
+                                    pattern="[0-9]"
+                                    maxlength="3"
+                                    class="speed-input"
+                                /> -->
+                                <p v-html="FormatSpeed(frontSpeedWarning)"></p>
+
+                            </div>
+                        </div>
+                        <!-- <div class="radar-polygon">
+                            <inlinesvg fill="#CF3033" src="./assets/polygon_up.svg" />
+                            <inlinesvg fill="#cf303369" src="./assets/polygon_down.svg" />
+                        </div> -->
+                    </div>
+                    <div class="radar-line">
+                        <inlinesvg src="./assets/left-line.svg" />
+                        <p>{{Locales["FRONT"]}}</p>
+                        <inlinesvg src="./assets/right-line.svg" />
+                    </div>
+                </div>
+                <div class="radar-frame-rear">
+                    <div class="radar-frame-wrapper">
+                        <div class="radar-frame-front-left">
+                            <div class="radar-frame-front-status">
+                                <p :class="{active:bwdMode == 'same' && rearXMIT}">SAME</p>
+                                <p :class="{active:bwdMode == 'opp' && rearXMIT}">OPP</p>
+                                <p :class="{active:rearXMIT}">XMIT</p>
+                            </div>
+                            <div class="radar-frame-front-speed">
+                                <p v-html="FormatSpeed(rearRadarSpeed)"></p>
+                            </div>
+                        </div>
+                        <div class="radar-frame-front-right">
+                            <div class="radar-frame-front-status">
+                                <p :class="{'active-red':parseInt(rearLockedSpeed) >= 0 ? true : false}">{{ Locales["LOCK"] }}</p>
+                                <p :class="{'active-red':rearSpeedWarning}">{{ Locales["FAST"] }}</p>
+                            </div>
+                            <div class="radar-frame-front-speed radar-frame-front-speed-red">
+                                <!-- <input
+                                    type="number"
+                                    min="1"
+                                    max="300"
+                                    v-model="frontAllowRadarSpeed"
+                                    placeholder="000"
+                                    pattern="[0-9]"
+                                    maxlength="3"
+                                    class="speed-input"
+                                /> -->
+                                <p v-html="FormatSpeed(rearSpeedWarning)"></p>
+                            </div>
+                        </div>
+                        <div class="radar-polygon"></div>
+                    </div>
+                    <div class="radar-line">
+                        <inlinesvg src="./assets/left-line.svg" />
+                        <p>{{ Locales["REAR"] }}</p>
+                        <inlinesvg src="./assets/right-line.svg" />
+                    </div>
+                </div>
+            </div>
+            <div class="radar-frame-bottom">
+                <div class="off-icon" :class="{active:!radarPower}">
+                    <inlinesvg src="./assets/off-icon.svg" />
+                    <p>{{ Locales["OFF"] }}</p>
+                </div>
+                <div class="on-icon" :class="{active:radarPower}">
+                    <inlinesvg src="./assets/on-icon.svg" />
+                    <p>{{ Locales["ON"] }}</p>
+                </div>
+                <div class="radar-location">
+                    <img src="./assets/location.png" />
+                    <div class="radar-location-text">
+                        <p class="radar-location-header">{{ Locales["RADAR_LOCATION"] }}</p>
+                        <p class="radar-location-street">{{location.street}}</p>
+                    </div>
+                </div>
+                <div class="radar-compass">
+                    <inlinesvg src="./assets/up.svg" />
+                    <p>{{location.heading}}</p>
+                </div>
+                <div class="radar-patrol-speed">
+                    <div class="radar-patrol-speed-container">
+                        <div>
+                            <p>{{ Locales["PATROL"] }}</p>
+                            <p>{{ Locales["SPEED"] }}</p>
+                        </div>
+
+
+                        <p class="radar-patrol-speed-text" v-html="FormatSpeed(patrolSpeed)"></p>
+                    </div>
+                    <div class="radar-polygon">
+                        <inlinesvg fill="#3DCF30" src="./assets/polygon_up.svg" />
+                        <inlinesvg fill="#3dcf3066" src="./assets/polygon_down.svg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

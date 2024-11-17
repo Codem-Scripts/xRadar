@@ -1,0 +1,148 @@
+<div class="radar-data-main">
+    <div class="radar-data-wrapper" @click.self="setShowSelect(false);PlaySound()">
+        <div class="radar-data-add-punish" v-if="addPunishModal">
+            <div class="radar-data-add-punish-wrapper">
+                <div class="radar-settings-header">
+                    <img src="./assets/radar-data-icon.png" />
+                    <div>
+                        <h1>{{Locales["ADD_PUNISHMENT"]}}</h1>
+                        <p>{{Locales["PUNISHMENT"]}}</p>
+                    </div>
+                </div>
+                <div class="radar-data-punish-container">
+                    <div class="radar-data-log-image">
+                        <img v-if="addPunishment.imageURL.length > 0" :src="addPunishment.imageURL" />
+                        <img v-else src="./assets/banshee.jpg" />
+                    </div>
+                    <div class="radar-data-punish-inputs">
+                        <p>{{Locales["IMG_URL"]}}</p>
+                        <div style="position: relative">
+                            <input v-model="addPunishment.imageURL" placeholder="Image url..." type="text" />
+                            <inlinesvg
+                                style="position: absolute; right: 0.2rem; top: 50%; transform: translateY(-50%)"
+                                src="./assets/img.svg"
+                            ></inlinesvg>
+                        </div>
+                        <p class="red">{{Locales["PLAYER"]}}</p>
+                        <input v-model="addPunishment.playerName" placeholder="name..." class="red" type="text" />
+                        <p class="red">{{Locales["PLATE"]}}</p>
+                        <input v-model="addPunishment.plate" placeholder="Vehicle Plate..." class="red" type="text" />
+                    </div>
+                </div>
+                <div class="add-punish-submit">
+                    <p class="write-description-text">{{Locales["WRITE_DESCRIPTION"]}}</p>
+                    <textarea v-model="addPunishment.description" placeholder="Type here..." class="write-description-textarea"></textarea>
+                    <div class="save-punish" @click="savePunishButton();PlaySound()">
+                        <inlinesvg src="./assets/save.svg"></inlinesvg>
+
+                        <p>Save Punish</p>
+                    </div>
+                </div>
+                <div class="settings-close-container">
+                    <div class="settings-close-button" @click="setAddPunishModal(false);PlaySound()">
+                        <inlinesvg src="./assets/close-icon.svg"></inlinesvg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="radar-settings-header">
+            <img src="./assets/radar-data-icon.png" />
+            <div>
+                <h1>{{Locales["RADAR_DATA"]}}</h1>
+                <p>{{Locales["DATA_ANALSYS"]}}</p>
+            </div>
+        </div>
+        <div class="radar-data-add">
+            <div class="radar-data-add-header">
+                <inlinesvg src="./assets/ion_list.svg" />
+                <p>{{Locales["PUNISHMENT_LIST"]}}</p>
+            </div>
+            <div class="radar-data-add-punish-button" @click="setAddPunishModal(true);PlaySound()">
+                <inlinesvg src="./assets/ic_round-warning.svg" />
+                <p>{{Locales["ADD_PUNISHMENT"]}}</p>
+            </div>
+        </div>
+        <div class="radar-data-category">
+            <div style="width: 12.25rem; height: 2rem" class="tablet-select" @click="setShowSelect(!showSelect);PlaySound()">
+                <p>A-z</p>
+                <inlinesvg src="./assets/select-icon.svg" />
+                <div style="width: 12.25rem; top: 2.25rem" class="tablet-select-options" v-if="showSelect">
+                    <p @click="sort('a-z');PlaySound()">A-z</p>
+                    <p @click="sort('z-a');PlaySound()">Z-a</p>
+                </div>
+            </div>
+            <div class="search-data-container">
+                <inlinesvg
+                    fill="white"
+                    style="position: absolute; cursor: pointer; right: 1rem; top: 55%; transform: translateY(-50%)"
+                    src="./assets/search-icon.svg"
+                />
+
+                <input
+                    v-model="searchBarRadarData"
+                    style="width: 12.25rem; height: 2rem; padding-right: 2.7rem"
+                    class="plate-number-input"
+                    type="text"
+                    placeholder="Search..."
+                />
+            </div>
+        </div>
+        <div class="radar-data-log-container">
+            <div class="radar-data-log" v-for="n in filterByTerm">
+                <div class="radar-data-log-top">
+                    <div class="radar-data-log-top-left">
+                        <div class="radar-data-log-image">
+                            <img :src="n.image" />
+                        </div>
+                        <div class="radar-data-log-players">
+                            <div class="radar-data-log-player citizen">
+                                <h1>{{Locales["CITIZEN"]}}</h1>
+                                <p>{{n.citizenname}}</p>
+                            </div>
+                            <div class="radar-data-log-player officer">
+                                <h1>{{Locales["OFFICER"]}}</h1>
+                                <p>{{n.officername}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-log-plate-container">
+                        <p class="plate-text">{{Locales["PLATE"]}};</p>
+                        <div class="plate">{{n.plate}}</div>
+                    </div>
+                </div>
+                <div class="radar-data-time">
+                    <div class="radar-settings-header-wrapper">
+                        <div class="radar-settings-header">
+                            <img style="width: 2rem; height: auto; object-fit: cover" src="./assets/radar-time-icon.png" />
+                            <div>
+                                <h1 style="font-size: 0.8rem">{{Locales["TIME"]}}</h1>
+                                <p style="font-size: 0.9rem">{{n.time}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radar-settings-header-wrapper">
+                        <div class="radar-settings-header">
+                            <img style="width: 2rem; height: auto; object-fit: cover" src="./assets/location.png" />
+                            <div>
+                                <h1 style="font-size: 0.8rem">{{Locales["LOCATION"]}}</h1>
+                                <p style="font-size: 0.9rem">{{n.location}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="radar-data-description">
+                    <h1>{{Locales["DESCRIPTION"]}}</h1>
+                    <div>
+                        <p>{{n.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="settings-close-container">
+            <p class="settings-close-text">Exit</p>
+            <div class="settings-close-button" @click="setActivePage(false);PlaySound()">
+                <inlinesvg src="./assets/close-icon.svg"></inlinesvg>
+            </div>
+        </div>
+    </div>
+</div>

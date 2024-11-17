@@ -1,0 +1,745 @@
+body {
+    user-select: none;
+}
+
+.radar {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 2rem;
+    width: 41.8125rem;
+    height: 19.375rem;
+    transition: filter .2 ease;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.radar-open-status {
+    position: absolute;
+    right: -0.4rem;
+    bottom: 9rem;
+    background-image: url(../../../assets/open-status.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 1.75rem;
+    height: 3.1875rem;
+}
+
+.radar-open-status div {
+    position: absolute;
+    left: 49%;
+    top: 10%;
+    transform: translateX(-50%);
+}
+
+.radar-mark {
+    position: absolute;
+    right: 1.5rem;
+    top: 63%;
+    transform: translateY(-50%);
+    width: 1.9375rem;
+    height: 10.0625rem;
+}
+
+.off-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    row-gap: 0.5rem;
+}
+
+
+
+
+.off-icon p {
+    color: rgba(255, 255, 255, 0.53);
+    font-family: DS-Digital;
+    font-size: 1.0527rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.off-icon.active p {
+    color: rgba(255, 255, 255, 1);
+
+}
+
+.radar-location {
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+}
+
+.radar-location-header {
+    font-family: DS-Digital;
+    font-size: 0.7452rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: radial-gradient(130.56% 130.56% at 50% 50%, rgba(255, 255, 255, 0.49) 0%, rgba(255, 255, 255, 0) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.radar-location-street {
+    font-family: DS-Digital;
+    font-size: 1.3099rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: radial-gradient(130.56% 130.56% at 50% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.on-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.5rem;
+}
+
+.on-icon p {
+    color: rgba(255, 255, 255, 0.53);
+    font-family: DS-Digital;
+    font-size: 1.0527rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.on-icon.active p {
+    color: rgba(255, 255, 255, 1);
+
+}
+
+
+.radar-open-status p {
+    position: absolute;
+    left: 27%;
+    top: 60%;
+    transform: translateX(-50%);
+    rotate: 85deg;
+    text-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 0, 0, 0.49);
+    font-family: DS-Digital;
+    font-size: 0.5147rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: radial-gradient(143.38% 143.38% at 50% 50%, #707070 0%, rgba(112, 112, 112, 0) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.radar-open-status.active p {
+    background: radial-gradient(143.38% 143.38% at 50% 50%, #34fa48 0%, #34fa48 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.radar-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
+.radar-off {
+    filter: brightness(35%);
+}
+
+.radar-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .85rem;
+    width: 100%;
+    flex: 1;
+}
+
+.rear-sensor {
+    background-image: url(../../../assets/radar-frame.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 9.3894rem;
+    height: 100%;
+}
+
+.front-sensor {
+    background-image: url(../../../assets/radar-frame.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 9.3894rem;
+    height: 100%;
+}
+
+.sensor-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.3rem;
+}
+
+.plate {
+    background-image: url(../../../assets/plate_1.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 5.2162rem;
+    height: 2.6081rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plate p {
+    color: #0000a3;
+    font-family: Penitentiary Gothic Fill;
+    font-size: 1.2448rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.sensor-wrapper .sensor-status {
+    display: flex;
+    align-items: center;
+    column-gap: 0.35rem;
+    color: #393939;
+}
+
+.sensor-wrapper .sensor-status p.active {
+    color: rgba(255, 255, 255, 0.499);
+}
+
+.sensor-wrapper .sensor-status p.active-orange {
+    color: #FF8A00;
+}
+
+.radar-frame {
+    background-image: url(../../../assets/radar-frame.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 13.4881rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.7rem 2.5rem;
+    overflow: hidden;
+    row-gap: .4rem;
+}
+
+.radar-frame-top {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1rem;
+    height: 55%;
+}
+
+.radar-compass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radar-patrol-speed-container {
+    background-image: url(../../../assets/patrol-speed-container.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 10.5rem;
+    height: 3.3125rem;
+    display: flex;
+    align-items: center;
+    column-gap: 0.6rem;
+    padding: 0.5rem 0.8rem;
+}
+
+.radar-patrol-speed-text {
+    font-family: DS-Digital;
+    font-size: 2.7477rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    color: rgba(0, 255, 71, 0.32);
+
+    letter-spacing: 0.2336rem;
+}
+
+.radar-patrol-speed-text span {
+    color: #00ff47;
+}
+
+.radar-patrol-speed-container div p {
+    font-family: DS-Digital;
+    font-size: 0.7942rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: radial-gradient(95.83% 95.83% at 50% 50%, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    word-wrap: break-word;
+}
+
+.radar-patrol-speed {
+    display: flex;
+    align-items: center;
+    column-gap: 0.7rem;
+}
+
+.radar-compass p {
+    color: rgba(255, 255, 255, 0.33);
+    text-align: right;
+    font-family: DS-Digital;
+    font-size: 1.2668rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.radar-frame-bottom {
+    height: 45%;
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+.radar-frame-front-left {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2rem;
+}
+
+.radar-frame-front-right {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2rem;
+}
+
+.radar-frame-front {
+    flex: 1;
+}
+
+.radar-frame-wrapper {
+    flex: 1;
+    display: flex;
+    column-gap: 1rem;
+}
+
+.radar-frame-front-status {
+    display: flex;
+    align-items: center;
+    column-gap: 0.7rem;
+    padding: 0rem 0.35rem;
+    color: #393939;
+    height: 1rem;
+}
+
+.speed-input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 2.2rem;
+    color: #cf3033;
+    font-family: DS-Digital;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    letter-spacing: 0.3rem;
+}
+
+.speed-input::placeholder {
+    font-size: 2.4rem;
+    color: rgba(207, 48, 51, 0.32);
+    font-family: DS-Digital;
+    font-style: normal;
+    font-weight: 900;
+    letter-spacing: 0.3rem;
+    line-height: normal;
+}
+
+.radar-line {
+    display: flex;
+    align-items: center;
+    column-gap: 0.25rem;
+    margin-top: 0.4rem;
+}
+
+.radar-line p {
+    font-size: 0.8942rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: radial-gradient(137.5% 137.5% at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.radar-polygon {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 0.5rem;
+    row-gap: 0.25rem;
+    position: relative;
+    right: 0.35rem;
+}
+
+.radar-polygon svg {
+    fill: inherit;
+}
+
+.radar-polygon svg path {
+    fill: inherit;
+}
+
+.radar-frame-front-status p {
+    font-size: 0.8942rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.radar-frame-front-speed {
+    width: 6.8125rem;
+    height: 3.125rem;
+    border-radius: 0.25rem;
+    background-image: url(../../../assets/radar-speed-dash.png);
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+}
+
+.radar-frame-front-speed p {
+    font-size: 2.4477rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.2336rem;
+    color: rgba(255, 136, 0, 0.32);
+}
+
+.radar-frame-front-speed p span {
+    color: rgba(255, 136, 0, 1);
+}
+
+.radar-frame-front-speed-red p {
+    color: rgba(207, 48, 51, 0.32);
+}
+
+.radar-frame-front-speed-red p span {
+    color: #cf3033;
+}
+
+.radar-frame-front-status p.active {
+    color: #ff8a00;
+}
+
+.radar-frame-front-status p.active-red {
+    color: #cf3033;
+}
+
+.radar-frame-rear {
+    flex: 1;
+}
+
+.rader-frame-bottom {
+    flex: 1;
+}
+
+.radar-fast-actions {
+    background-image: url(../../../assets/radar-fast-actions-container.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 26.8125rem;
+    height: 19.375rem;
+    position: absolute;
+    right: 2rem;
+    bottom: 25rem;
+}
+
+.keys {
+    width: 11.375rem;
+    height: 140%;
+    background-image: url(../../../assets/keys-container.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: .35rem;
+    position: relative;
+    bottom: 20%;
+    padding-bottom: .4rem;
+  
+}
+
+.key-container {
+    display: flex;
+    align-items: center;
+    column-gap: .3rem;
+}
+
+.key {
+    border-radius: 0.125rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.21);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    color: rgba(255, 255, 255, 0.60);
+    font-family: Gilroy;
+    font-size: 0.5611rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.shortcut {
+    display: flex;
+    flex-direction: column;
+    row-gap: .2rem;
+}
+
+.shortcut p {
+    color: rgba(255, 255, 255, 0.70);
+    font-family: Gilroy;
+    font-size: 0.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.shortcut h1 {
+    color: rgba(255, 255, 255, 0.40);
+    font-family: Gilroy;
+    font-size: 0.475rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+
+.radar-fast-actions-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: .75rem;
+
+}
+
+.radar-fast-actions-container {
+    display: flex;
+    column-gap: .5rem;
+    flex: 1;
+}
+
+.radar-fast-actions-left {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    row-gap: .85rem;
+    height: 100%;
+}
+
+.radar-fast-actions-right {
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+}
+
+
+.radar-fast-actions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.radar-fast-actions-front-antenna {
+    width: 100%;
+    height: 5.8125rem;
+    border-radius: 0.5625rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.12);
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: .65rem;
+}
+
+.radar-fast-actions-rear-antenna {
+    width: 100%;
+    height: 5.8125rem;
+    border-radius: 0.5625rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.12);
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: .65rem;
+
+}
+
+.radar-fast-actions-front-antenna h1 {
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%;
+    /* 0.675rem */
+}
+
+.radar-fast-actions-rear-antenna h1 {
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%;
+    /* 0.675rem */
+}
+
+
+.radar-fast-actions-exit {
+    display: flex;
+    align-items: center;
+    column-gap: .75rem;
+}
+
+.radar-fast-actions-antenna-buttons {
+    display: flex;
+    align-items: center;
+    column-gap: .6rem;
+    justify-content: space-between;
+}
+
+.radar-fast-actions-antenna-button {
+    flex: 1;
+    height: 1.4375rem;
+    border-radius: 0.1875rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.04);
+    background: radial-gradient(39.44% 89.29% at 50.18% -0.00%, rgba(139, 139, 139, 0.23) 0%, rgba(139, 139, 139, 0.00) 100%), radial-gradient(125.00% 125.00% at 50.00% 50.00%, rgba(81, 81, 81, 0.37) 0%, rgba(88, 88, 88, 0.00) 100%);
+    color: rgba(255, 255, 255, 0.43);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Gilroy;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.radar-fast-actions-antenna-button.active {
+    border: 0.0625rem solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(39.44% 89.29% at 50.18% -0.00%, rgba(72, 255, 123, 0.23) 0%, rgba(72, 255, 123, 0.00) 100%), radial-gradient(125.00% 125.00% at 50.00% 50.00%, rgba(72, 255, 123, 0.37) 0%, rgba(72, 255, 123, 0.00) 100%);
+    box-shadow: 0rem 0.25rem 0.875rem 0rem rgba(66, 217, 111, 0.23);
+    color: #FFF;
+
+}
+
+.radar-fast-actions-antenna-button:hover {
+    opacity: 0.8;
+}
+
+.speed-warning-antenna {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}
+
+.speed-warning-antenna h1 {
+    word-break: break-word;
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%;
+    /* 0.675rem */
+}
+
+.speed-warning-antenna input {
+    width: 2.6875rem;
+    height: 1.25rem;
+    appearance: none;
+    outline: none;
+    border: none;
+    border-radius: 0.1875rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: Gilroy;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%;
+    /* 0.7875rem */
+}
+
+.speed-warning-antenna input::placeholder {
+    color: rgba(255, 255, 255, 0.51);
+
+}
+
+
+.increase-speed-button {
+    width: 2.6875rem;
+    height: 1.125rem;
+    background-image: url(../../../assets/increase-speed-container.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.increase-speed-button:hover {
+    opacity: 0.8;
+}
+
+.decrease-speed-button {
+    width: 2.6875rem;
+    height: 1.125rem;
+    background-image: url(../../../assets/decrease-speed-container.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.decrease-speed-button:hover {
+    opacity: 0.8;
+}

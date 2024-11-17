@@ -1,0 +1,421 @@
+.radar-data-main {
+    position: absolute;
+    background-image: url(../../../../../assets/radar-data-page-container.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 52.8125rem;
+    height: 34.4375rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.radar-data-add-punish {
+    background-image: url(../../../../../assets/add-punishment-container.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 27.375rem;
+    height: 25.1875rem;
+}
+
+.radar-data-punish-inputs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.55rem;
+}
+
+.write-description-text {
+    color: #fff;
+    font-family: Gilroy;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0%;
+    /* 0rem */
+}
+
+.radar-data-punish-inputs input {
+    appearance: none;
+    width: 13.1875rem;
+    height: 1.9375rem;
+    border-radius: 0.25rem;
+    padding: 0 0.5rem;
+    padding-right: 1.5rem;
+    outline: none;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.06);
+    background: radial-gradient(84% 84% at 50% 50%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: Gilroy;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.radar-data-punish-inputs input.red {
+    color: rgba(255, 180, 180, 0.46);
+
+    background: radial-gradient(84% 84% at 50% 50%, rgba(255, 180, 180, 0.06) 0%, rgba(255, 180, 180, 0) 100%);
+}
+
+.radar-data-punish-inputs input.red::placeholder {
+    color: rgba(255, 180, 180, 0.9);
+}
+
+.radar-data-punish-inputs input::placeholder {
+    color: rgba(255, 255, 255, 0.33);
+    font-family: Gilroy;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.radar-data-punish-inputs p {
+    color: #fff;
+    font-family: Gilroy;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0%;
+    /* 0rem */
+}
+
+.radar-data-punish-inputs p.red {
+    color: #ffb4b4;
+}
+
+.radar-data-punish-container {
+    display: flex;
+    column-gap: 0.7rem;
+}
+
+.radar-data-add-punish-wrapper {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.radar-data-add-punish {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.radar-data-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+}
+
+.radar-data-add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.radar-data-add-punish-button {
+    width: 8.5625rem;
+    height: 1.6875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.4rem;
+    border-radius: 0.3333rem;
+    border: 0.1111rem solid rgba(0, 163, 255, 0.31);
+    background: radial-gradient(101.47% 101.47% at 50% 50%, rgba(0, 163, 255, 0.32) 0%, rgba(0, 163, 255, 0) 100%);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.search-data-container svg {
+    fill: inherit;
+}
+
+.radar-data-log-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex: 1;
+    overflow: auto;
+    row-gap: 0.75rem;
+    column-gap: 0.75rem;
+}
+
+::-webkit-scrollbar {
+    width: 0.2em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.2rem;
+}
+
+.radar-data-log-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radar-data-log-top-left {
+    display: flex;
+    column-gap: 1rem;
+}
+
+.data-log-plate-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.35rem;
+}
+
+.radar-data-time {
+    display: flex;
+    align-items: center;
+    column-gap: 0.85rem;
+}
+
+.radar-data-description {
+    background-image: url(../../../../../assets/description-container.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 21.25rem;
+    height: 4.55rem;
+    padding: 0.5rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.radar-data-description h1 {
+    color: #fff;
+    font-family: Gilroy;
+    font-size: 0.6625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 90%;
+}
+
+.radar-data-description div {
+    flex: 1;
+    overflow: auto;
+}
+
+.radar-data-description p {
+    color: rgba(255, 255, 255, 0.47);
+    font-family: Gilroy;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.plate-text {
+    color: #fff;
+    font-family: Gilroy;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.radar-data-log-players {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+}
+
+.radar-data-log-player {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.05rem;
+}
+
+.radar-data-log-player.citizen h1 {
+    color: rgba(255, 180, 180, 0.63);
+    font-family: Gilroy;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.radar-data-log-player.citizen p {
+    color: #ffb4b4;
+    font-family: Gilroy;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.radar-data-log-player.officer h1 {
+    color: rgba(255, 255, 255, 0.63);
+    font-family: Gilroy;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.radar-data-log-player.officer p {
+    color: #fff;
+    font-family: Gilroy;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.2rem;
+}
+
+.radar-data-log {
+    background-image: url(../../../../../assets/radar-data-log-container.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 48%;
+    height: 16.2rem;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+}
+
+.radar-data-log-image {
+    border-radius: 0.25rem;
+    margin-top: 1.5rem;
+    width: 8.2375rem;
+    height: 5.55rem;
+    border: 0.1875rem solid rgba(255, 255, 255, 0.22);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), lightgray -6.25rem -2.8125rem / 207.962% 176.86% no-repeat;
+}
+
+.radar-data-log-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-data-container div {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.search-data-container div:hover {
+    opacity: 0.8;
+}
+
+.search-data-container path {
+    fill: inherit;
+}
+
+.search-data-container {
+    position: relative;
+}
+
+.radar-data-category {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 0.5rem;
+}
+
+.radar-data-add-punish-button:hover {
+    opacity: 0.8;
+}
+
+.radar-data-add-punish-button p {
+    color: #37b7ff;
+    font-family: Gilroy;
+    font-size: 0.6667rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.radar-data-add-header {
+    display: flex;
+    align-items: center;
+    column-gap: 0.6rem;
+}
+
+.radar-data-add-header p {
+    color: #fff;
+    font-family: Gilroy;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.write-description-textarea {
+    appearance: none;
+    outline: none;
+    width: 23.625rem;
+    height: 4.1875rem;
+    flex-shrink: 0;
+    border-radius: 0.375rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: Gilroy;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    resize: none;
+    padding: 0.5rem;
+    /* 0rem */
+}
+
+.save-punish {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.4rem;
+    width: 23.625rem;
+    height: 2.125rem;
+    border-radius: 0.3125rem;
+    border: 0.0625rem solid rgba(0, 163, 255, 0.53);
+    background: radial-gradient(152.94% 152.94% at 50% 50%, rgba(0, 163, 255, 0.17) 0%, rgba(0, 163, 255, 0) 100%);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.save-punish:hover {
+    opacity: 0.8;
+}
+
+.save-punish p {
+    color: #37b7ff;
+    font-family: Gilroy;
+    font-size: 0.7511rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.add-punish-submit {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+}
+
+.write-description-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-family: Gilroy;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    /* 0rem */
+}
